@@ -32,18 +32,25 @@
     function formatPrice(price) {
       return toFarsiNumber(price.toLocaleString('en-US')) + ' تومان';
     }
+    
     document.querySelectorAll('.menu-item').forEach(item => {
       const select = item.querySelector('.choice');
       const priceDisplay = item.querySelector('.price');
+
+          if (!select || !priceDisplay) return;
     
-      select.addEventListener('change', function () {
-        let price = 0;
-        if (this.value === "single") {
-          price = 299000;
-        } else if (this.value === "double") {
-          price = 399000;
-        }
-        priceDisplay.innerText = formatPrice(price);
+      function updatePrice() {
+      let price = 0;
+      if (select.value === "single") {
+        price = parseInt(select.dataset.single);
+      } else if (select.value === "double") {
+        price = parseInt(select.dataset.double);
+      }
+      priceDisplay.innerText = formatPrice(price);
+    }
+
+    select.addEventListener('change', updatePrice);
+    updatePrice();
       });
     });
 
