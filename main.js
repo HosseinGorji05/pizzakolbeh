@@ -22,4 +22,30 @@
     document.body.classList.remove('fade-out');
   });
 
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+    function toFarsiNumber(n) {
+      const farsiDigits = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+      return n.toString().replace(/\d/g, x => farsiDigits[x]);
+    }
+    
+    function formatPrice(price) {
+      return toFarsiNumber(price.toLocaleString('en-US')) + ' تومان';
+    }
+    document.querySelectorAll('.menu-item').forEach(item => {
+      const select = item.querySelector('.choice');
+      const priceDisplay = item.querySelector('.price');
+    
+      select.addEventListener('change', function () {
+        let price = 0;
+        if (this.value === "single") {
+          price = 299000;
+        } else if (this.value === "double") {
+          price = 399000;
+        }
+        priceDisplay.innerText = formatPrice(price);
+      });
+    });
+
+  });
 
