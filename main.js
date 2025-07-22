@@ -8,6 +8,8 @@
 
         // Add fade-out class
         document.body.classList.add('fade-out');
+        document.body.classList.remove('fade-in');
+
 
         // Wait for fade-out to finish, then navigate
         setTimeout(() => {
@@ -20,6 +22,7 @@
   // When new page loads, fade-in
   window.addEventListener('load', () => {
     document.body.classList.remove('fade-out');
+      document.body.classList.add("fade-in");
   });
 
   document.addEventListener("DOMContentLoaded", function () {
