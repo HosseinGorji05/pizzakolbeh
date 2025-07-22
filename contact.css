@@ -1,6 +1,8 @@
 body {
   opacity: 0;
   transition: opacity 0.5s ease;
+  display: flex;
+  flex-direction: column;
 }
 html, body {
   height: 100%;
