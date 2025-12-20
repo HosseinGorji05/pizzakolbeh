@@ -41,7 +41,7 @@
       if (select.value === "medium") {
         price = parseInt(select.dataset.medium);
       } else if (select.value === "family") {
-        price = parseInt(select.dataset.family);
+        price = parseInt(select.dataset.double);
       }
       priceDisplay.innerText = formatPrice(price);
     }

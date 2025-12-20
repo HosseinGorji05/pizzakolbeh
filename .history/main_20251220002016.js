@@ -1,32 +1,26 @@
-  // When link is clicked
   document.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', function (e) {
-      // Only handle internal links
       const url = link.getAttribute("href");
       if (!url.startsWith("#") && !url.startsWith("http")) {
-        e.preventDefault(); // Prevent default navigation
+        e.preventDefault(); 
 
-        // Add fade-out class
         document.body.classList.add('fade-out');
         document.body.classList.remove('fade-in');
 
 
-        // Wait for fade-out to finish, then navigate
         setTimeout(() => {
           window.location.href = url;
-        }, 500); // match CSS transition time
+        }, 500); 
       }
     });
   });
 
-  // When new page loads, fade-in
   window.addEventListener('load', () => {
     document.body.classList.remove('fade-out');
       document.body.classList.add("fade-in");
   });
 
   document.addEventListener("DOMContentLoaded", function () {
-    // your code here
     function toFarsiNumber(n) {
       const farsiDigits = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
       return n.toString().replace(/\d/g, x => farsiDigits[x]);
@@ -44,9 +38,9 @@
     
       function updatePrice() {
       let price = 0;
-      if (select.value === "single") {
+      if (select.value === "medium") {
         price = parseInt(select.dataset.single);
-      } else if (select.value === "double") {
+      } else if (select.value === "family") {
         price = parseInt(select.dataset.double);
       }
       priceDisplay.innerText = formatPrice(price);
