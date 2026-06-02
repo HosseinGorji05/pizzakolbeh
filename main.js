@@ -38,7 +38,9 @@
     
       function updatePrice() {
       let price = 0;
-      if (select.value === "medium") {
+      if (select.value === "single") {
+        price = parseInt(select.dataset.single);
+      } else if (select.value === "medium") {
         price = parseInt(select.dataset.medium);
       } else if (select.value === "family") {
         price = parseInt(select.dataset.family);
