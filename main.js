@@ -36,17 +36,25 @@
 
           if (!select || !priceDisplay) return;
     
-      function updatePrice() {
-      let price = 0;
-      if (select.value === "single") {
-        price = parseInt(select.dataset.single);
-      } else if (select.value === "medium") {
-        price = parseInt(select.dataset.medium);
-      } else if (select.value === "family") {
-        price = parseInt(select.dataset.family);
+      function getDatasetPrice(key) {
+        const value = select.dataset[key];
+        const price = parseInt(value, 10);
+        return Number.isFinite(price) ? price : 0;
       }
-      priceDisplay.innerText = formatPrice(price);
-    }
+
+      function updatePrice() {
+        let price = 0;
+        if (select.value === "single") {
+          price = getDatasetPrice("single");
+        } else if (select.value === "twoPersons") {
+          price = getDatasetPrice("twoPersons");
+        } else if (select.value === "medium") {
+          price = getDatasetPrice("medium");
+        } else if (select.value === "family") {
+          price = getDatasetPrice("family");
+        }
+        priceDisplay.innerText = formatPrice(price);
+      }
 
     select.addEventListener('change', updatePrice);
     updatePrice();
